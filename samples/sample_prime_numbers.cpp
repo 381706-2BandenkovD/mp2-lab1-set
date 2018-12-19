@@ -19,10 +19,20 @@ int main()
   int n, m, k, count;
 
   setlocale(LC_ALL, "Russian");
+
+  int l;
+  cout << "Проверка ввода" << endl;
+  cout << "Введите длину" << endl;
+  cin >> l;
+  TBitField test(l);
+  cout << "Введите битовое поле" << endl;
+  cin >> test;
+  cout << test << endl;
+
   cout << "Тестирование программ поддержки битового поля" << endl;
   cout << "             Решето Эратосфена" << endl;
   cout << "Введите верхнюю границу целых значений - ";
-  cin  >> n;
+  cin >> n;
   TBitField s(n + 1);
   // заполнение множества
   for (m = 2; m <= n; m++)
@@ -62,7 +72,7 @@ int main()
   cout << "Тестирование программ поддержки множества" << endl;
   cout << "              Решето Эратосфена" << endl;
   cout << "Введите верхнюю границу целых значений - ";
-  cin  >> n;
+  cin >> n;
   TSet s(n + 1);
   // заполнение множества
   for (m = 2; m <= n; m++)
@@ -72,8 +82,8 @@ int main()
     // если м в s, удаление кратных
     if (s.IsMember(m))
       for (k = 2 * m; k <= n; k += m)
-       if (s.IsMember(k))
-         s.DelElem(k);
+        if (s.IsMember(k))
+          s.DelElem(k);
   // оставшиеся в s элементы - простые числа
   cout << endl << "Печать множества некратных чисел" << endl << s << endl;
   cout << endl << "Печать простых чисел" << endl;

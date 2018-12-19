@@ -244,7 +244,7 @@ TEST(TBitField, can_invert_large_bitfield)
   bf.SetBit(35);
   negBf = ~bf;
 
-  for(int i = 0; i < size; i++)
+  for (int i = 0; i < size; i++)
     expNegBf.SetBit(i);
   expNegBf.ClrBit(35);
 
@@ -288,7 +288,7 @@ TEST(TBitField, can_invert_many_random_bits_bitfield)
 
   negBf = ~bf;
 
-  for(int i = 0; i < size; i++)
+  for (int i = 0; i < size; i++)
     expNegBf.SetBit(i);
   for (unsigned int i = 0; i < bits.size(); i++)
     expNegBf.ClrBit(bits[i]);
@@ -308,4 +308,12 @@ TEST(TBitField, bitfields_with_different_bits_are_not_equal)
   bf2.SetBit(2);
 
   EXPECT_NE(bf1, bf2);
+}
+
+TEST(TBitField, compare_bitfields_of_non_equal_size)
+{
+  const int size = 2;
+  TBitField bf1(size), bf2(size + 1);
+
+  EXPECT_EQ(bf1 == bf2, 0);
 }
